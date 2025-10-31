@@ -3,6 +3,16 @@
 # Author: Eleni Baltzi
 # Date: Sys.Date()
 # ============================================================
+# This script runs the main simulations and analyses for the predator-mediated coexistence project.
+# It includes:
+# 1. Package setup
+# 2. File path setup
+# 3. Loading model functions
+# 4. Running a baseline time-series simulation
+# 5. Performing a bifurcation analysis by varying predator mortality
+# 6. Saving results and figures
+# ============================================================  
+# this way we have a single script to run all analyses and generate outputs at once!
 
 # --- 0. Package setup ---
 required_packages <- c("deSolve", "ggplot2", "dplyr", "purrr", "tibble", "readr") # list of required packages
@@ -20,30 +30,30 @@ for (pkg in required_packages) {
 invisible(lapply(required_packages, library, character.only = TRUE))
 
 # --- 1. File paths ---
-root_dir <- getwd()
-dir.create(file.path(root_dir, "data"), showWarnings = FALSE)
-dir.create(file.path(root_dir, "figures"), showWarnings = FALSE)
+root_dir <- getwd() # assume script is run from project root
+dir.create(file.path(root_dir, "data"), showWarnings = FALSE) # create data directory
+dir.create(file.path(root_dir, "figures"), showWarnings = FALSE) # create figures directory
 
 # --- 2. Load model functions ---
-source("R/model_functions.R")
+source("R/model_functions.R") # load ODE model and simulation functions
 
 # --- 3. Define baseline parameters ---
-p <- list(
-  r1 = 1.0, r2 = 0.9,
-  K1 = 1.0, K2 = 1.0,
-  alpha12 = 0.7, alpha21 = 0.9,
+p <- list( # parameters
+  r1 = 1.0, r2 = 0.9, # growth rates
+  K1 = 1.0, K2 = 1.0,   # carrying capacities
+  alpha12 = 0.7, alpha21 = 0.9, # competition coefficients
   a1 = 2.0, a2 = 1.0,  # predator prefers prey 1
-  h1 = 0.3, h2 = 0.3,
-  e = 0.6, m = 0.4
+  h1 = 0.3, h2 = 0.3, # handling times
+  e = 0.6, m = 0.4 # efficiency and mortality
 )
 
 # --- 4. Run single simulation ---
 cat("\n Running baseline time-series simulation...\n")
 
-res <- run_sim(p)
+res <- run_sim(p) # run simulation with default initial conditions and tmax=500
 
 # Save CSV
-write_csv(res, "data/sim_timeseries.csv")
+write_csv(res, "data/sim_timeseries.csv") # save results
 
 # Plot and save as PNG + PDF
 plot_ts <- ggplot(res, aes(time)) +
@@ -62,15 +72,15 @@ cat(" Time-series simulation complete and saved.\n")
 # --- 5. Run bifurcation (predator mortality sweep) ---
 cat("\nRunning bifurcation analysis (keystone effect)...\n")
 
-m_values <- seq(0.1, 1.0, by = 0.05)
-steady_states <- purrr::map_dfr(m_values, function(mv) {
-  p$m <- mv
-  out <- run_sim(p)
-  last <- tail(out, 1)
-  tibble(m = mv, N1 = last$N1, N2 = last$N2, P = last$P)
+m_values <- seq(0.1, 1.0, by = 0.05) # range of mortality values
+steady_states <- purrr::map_dfr(m_values, function(mv) { # for each mortality value
+  p$m <- mv # update mortality in parameters
+  out <- run_sim(p) # run simulation
+  last <- tail(out, 1) # get last time point (steady state)
+  tibble(m = mv, N1 = last$N1, N2 = last$N2, P = last$P) # return steady state
 })
 
-write_csv(steady_states, "data/bifurcation_m.csv")
+write_csv(steady_states, "data/bifurcation_m.csv") # save results
 
 plot_bif <- ggplot(steady_states, aes(m)) +
   geom_line(aes(y = N1, color = "Prey 1"), linewidth = 1) +
