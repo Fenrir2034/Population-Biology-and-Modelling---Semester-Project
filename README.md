@@ -14,7 +14,7 @@ Through numerical simulations of a **two-prey, one-predator dynamical system**, 
 
 The predator thereby acts as a **keystone species**: removing it collapses coexistence and reduces community diversity.
 
-![Predator-mediated coexistence](figures/Capture d\342\200\231\303\251cran du 2025-10-31 23-19-51.png]
+![Predator-mediated coexistence](figures/starfish.jpeg]
 ![Predator-mediated coexistence](figures/www.earth.jpeg)
 ---
 
