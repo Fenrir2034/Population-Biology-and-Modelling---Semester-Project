@@ -1,7 +1,7 @@
 ### Predator-Mediated Coexistence and Keystone Species
 # Predator-Mediated Coexistence and Keystone Species
  
-**Course:** Population Biology and Modelling — M1 Computational Biology  
+**Course:** Population Biology and Modelling — M2 Computational Biology  
 **Institution:** Aix-Marseille Université
 **Language:** R (`deSolve`, `ggplot2`, `purrr`, `dplyr`, `tibble`)  
 
