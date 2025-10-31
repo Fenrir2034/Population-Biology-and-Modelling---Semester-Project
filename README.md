@@ -88,34 +88,18 @@ PredatorMediatedCoexistence/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Fenrir2034/PredatorMediatedCoexistence.git
-cd PredatorMediatedCoexistence
+git clone https://github.com/Fenrir2034/Population-Biology-and-Modelling---Semester-Project.git
+cd Population-Biology-and-Modelling---Semester-Project
 ````
 
-### Install dependencies in R
+### Run the simulation (installs dependencies if not already installed)
 
 ```r
-install.packages(c("deSolve", "ggplot2", "dplyr", "tibble", "purrr"))
+source("scripts/run_all.R")
 ```
 
-### Run the base simulation
+This produces a time-series plot of predator and prey abundances showing predator-mediated coexistence and sweeps predator mortality (`m`) to visualize how predator removal drives competitive exclusion.
 
-```r
-source("R/model_functions.R")
-source("scripts/simulate_two_prey_predator.R")
-```
-
-This produces a time-series plot of predator and prey abundances showing predator-mediated coexistence.
-
-### Explore bifurcations
-
-```r
-source("scripts/bifurcation_attackrate.R")
-```
-
-This script sweeps predator mortality (`m`) to visualize how predator removal drives competitive exclusion.
-
----
 
 ## Expected results
 
