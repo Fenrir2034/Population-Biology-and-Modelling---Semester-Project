@@ -2,7 +2,7 @@
 # Predator-Mediated Coexistence and Keystone Species
  
 **Course:** Population Biology and Modelling — M1 Computational Biology  
-**Institution:** Aix-Marseille Université — Institut de Neurosciences de la Timone  
+**Institution:** Aix-Marseille Université
 **Language:** R (`deSolve`, `ggplot2`, `purrr`, `dplyr`, `tibble`)  
 
 ---
