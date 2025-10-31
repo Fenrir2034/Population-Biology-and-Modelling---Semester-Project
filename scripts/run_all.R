@@ -60,7 +60,7 @@ ggsave("figures/sim_timeseries.pdf", plot_ts, width = 7, height = 5)
 cat(" Time-series simulation complete and saved.\n")
 
 # --- 5. Run bifurcation (predator mortality sweep) ---
-cat("\n📈 Running bifurcation analysis (keystone effect)...\n")
+cat("\nRunning bifurcation analysis (keystone effect)...\n")
 
 m_values <- seq(0.1, 1.0, by = 0.05)
 steady_states <- purrr::map_dfr(m_values, function(mv) {
@@ -95,4 +95,4 @@ cat("   - data/bifurcation_m.csv\n")
 cat(" Figures saved to:\n")
 cat("   - figures/sim_timeseries.png / .pdf\n")
 cat("   - figures/bifurcation_m.png / .pdf\n")
-cat("\n✨ Done! You can now include these results in your LaTeX report.\n")
+cat("\nDone!.\n")
