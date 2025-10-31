@@ -66,6 +66,8 @@ PredatorMediatedCoexistence/
 
 ├── scripts/
 
+│   ├── run_all.R # run everything with one command
+
 │   ├── simulate_two_prey_predator.R # time-series simulation
 
 │   ├── bifurcation_attackrate.R     # keystone (mortality) bifurcation
