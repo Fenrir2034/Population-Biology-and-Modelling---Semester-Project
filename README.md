@@ -18,20 +18,113 @@ The predator thereby acts as a **keystone species**: removing it collapses coexi
 
 ## Model
 
-The system is modeled by a **Rosenzweig–MacArthur-type functional response** with two prey (\(N_1, N_2\)) and one predator (\(P\)):
+We use a 2-prey–1-predator Rosenzweig–MacArthur system.
 
-\[
+State variables:
+- N1: prey 1
+- N2: prey 2
+- P: predator
+
+Parameters:
+- r1, r2: intrinsic growth rates
+- K1, K2: carrying capacities
+- a1, a2: predator attack rates on N1, N2
+- h1, h2: handling times
+- alpha12: effect of species 2 on species 1 (competition)
+- alpha21: effect of species 1 on species 2
+- e: conversion efficiency
+- m: predator mortality
+
+Dynamics (human-readable):
+
+We use a 2-prey–1-predator Rosenzweig–MacArthur model:
+
+```math
 \begin{aligned}
-\frac{dN_1}{dt} &= r_1 N_1 \left(1 - \frac{N_1 + \alpha_{12}N_2}{K_1}\right)
-                  - \frac{a_1 N_1 P}{1 + a_1 h_1 N_1 + a_2 h_2 N_2}, \\
-\frac{dN_2}{dt} &= r_2 N_2 \left(1 - \frac{N_2 + \alpha_{21}N_1}{K_2}\right)
-                  - \frac{a_2 N_2 P}{1 + a_1 h_1 N_1 + a_2 h_2 N_2}, \\
-\frac{dP}{dt}   &= e \left( \frac{a_1 N_1 + a_2 N_2}{1 + a_1 h_1 N_1 + a_2 h_2 N_2} \right) P
-                  - mP.
+\frac{dN_1}{dt} &= r_1 N_1 \left(1 - \frac{N_1 + \alpha_{12} N_2}{K_1}\right)
+  - \frac{a_1 N_1 P}{1 + a_1 h_1 N_1 + a_2 h_2 N_2}, \\
+\\
+\frac{dN_2}{dt} &= r_2 N_2 \left(1 - \frac{N_2 + \alpha_{21} N_1}{K_2}\right)
+  - \frac{a_2 N_2 P}{1 + a_1 h_1 N_1 + a_2 h_2 N_2}, \\
+\\
+\frac{dP}{dt} &= e \frac{a_1 N_1 + a_2 N_2}{1 + a_1 h_1 N_1 + a_2 h_2 N_2} P - mP.
 \end{aligned}
-\]
+```
+
+
 
 ---
 
-## Project structure
+##structure
+
+
+
+PredatorMediatedCoexistence/
+├── R/
+
+│   └── model_functions.R           # ODE definitions + solver
+
+├── scripts/
+
+│   ├── simulate_two_prey_predator.R # time-series simulation
+
+│   ├── bifurcation_attackrate.R     # keystone (mortality) bifurcation
+
+│   └── sensitivity_keystone.R       # optional 2D parameter sweep
+
+├── data/                            # output tables (.csv)
+
+├── figures/                         # plots (phase planes, bifurcations)
+
+├── README.md                        # this file
+
+└── PredatorMediatedCoexistence.Rproj
+
+
+
+---
+
+## Quick start
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Fenrir2034/PredatorMediatedCoexistence.git
+cd PredatorMediatedCoexistence
+````
+
+### Install dependencies in R
+
+```r
+install.packages(c("deSolve", "ggplot2", "dplyr", "tibble", "purrr"))
+```
+
+### Run the base simulation
+
+```r
+source("R/model_functions.R")
+source("scripts/simulate_two_prey_predator.R")
+```
+
+This produces a time-series plot of predator and prey abundances showing predator-mediated coexistence.
+
+### Explore bifurcations
+
+```r
+source("scripts/bifurcation_attackrate.R")
+```
+
+This script sweeps predator mortality (`m`) to visualize how predator removal drives competitive exclusion.
+
+---
+
+## Expected results
+
+| Ecological regime | Description                                                      |
+| ----------------- | ---------------------------------------------------------------- |
+| **Coexistence**   | Predator regulates dominant prey, allowing both prey to persist. |
+| **Exclusion**     | Predator extinct → competitive exclusion by one prey.            |
+| **Oscillations**  | Moderate enrichment → predator–prey limit cycles.                |
+
+---
+
 
