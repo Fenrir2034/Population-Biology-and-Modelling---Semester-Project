@@ -9,7 +9,7 @@
 
 ## Intro
 
-This project explores **predator-mediated coexistence** — a key ecological mechanism where a shared predator promotes coexistence among competing prey species by preferentially suppressing the stronger competitor.  
+This project explores **predator-mediated coexistence** which is a key ecological mechanism where a shared predator promotes coexistence among competing prey species by preferentially suppressing the stronger competitor.  
 Through numerical simulations of a **two-prey, one-predator dynamical system**, the project examines how predator mortality and feeding preferences determine whether all species coexist or one prey excludes the other.
 
 The predator thereby acts as a **keystone species**: removing it collapses coexistence and reduces community diversity.
