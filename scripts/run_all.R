@@ -5,7 +5,7 @@
 # ============================================================
 
 # --- 0. Package setup ---
-required_packages <- c("deSolve", "ggplot2", "dplyr", "purrr", "tibble", "readr")
+required_packages <- c("deSolve", "ggplot2", "dplyr", "purrr", "tibble", "readr") # list of required packages
 
 # install any missing packages
 installed <- installed.packages()[, "Package"]
