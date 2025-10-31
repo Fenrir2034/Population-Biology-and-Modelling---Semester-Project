@@ -40,9 +40,7 @@ Parameters:
 - e: conversion efficiency
 - m: predator mortality
 
-Dynamics (human-readable):
-
-We use a 2-prey–1-predator Rosenzweig–MacArthur model:
+Dynamics:
 
 ```math
 \begin{aligned}
