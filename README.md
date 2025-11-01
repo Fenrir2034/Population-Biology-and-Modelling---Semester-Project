@@ -91,7 +91,7 @@ PredatorMediatedCoexistence/
 
 ## Quick start
 
-### 1. Clone the repository
+### Clone the repository
 ```bash
 git clone https://github.com/Fenrir2034/Population-Biology-and-Modelling---Semester-Project.git
 cd Population-Biology-and-Modelling---Semester-Project
