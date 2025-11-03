@@ -116,4 +116,4 @@ This produces a time-series plot of predator and prey abundances showing predato
 
 ---
 
-
+<p align="center"> <img src="figures/sim_timeseries.png" width="45%"> <img src="figures/bifurcation_m.png" width="45%"> </p> <p align="center"> <em>Left:</em> Predator-mediated coexistence — all species persist at equilibrium. <em>Right:</em> Keystone effect — increasing predator mortality triggers prey exclusion and loss of diversity. </p>
