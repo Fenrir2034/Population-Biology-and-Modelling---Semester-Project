@@ -14,7 +14,7 @@ Through numerical simulations of a **two-prey, one-predator dynamical system**, 
 
 The predator thereby acts as a **keystone species**: removing it collapses coexistence and reduces community diversity.
 
-Empirical evidence for predator-mediated coexistence has been documented across diverse ecosys- tems. A classic example is Paine’s (1966) intertidal study of the sea star Pisaster ochraceus, which preys on mus- sels and barnacles along the Pacific coast. Removal of the predator led to competitive exclusion and a collapse in community diversity, establishing the concept of the “key- stone species.” More recent examples include the rein- troduction of gray wolves (Canis lupus) to Yellowstone National Park, which restored trophic balance by regulat- ing elk populations and allowing vegetation and secondary consumers to recover. 
+Empirical evidence for predator-mediated coexistence has been documented across diverse ecosystems. A classic example is Paine’s (1966) intertidal study of the sea star Pisaster ochraceus, which preys on mussels and barnacles along the Pacific coast. Removal of the predator led to competitive exclusion and a collapse in community diversity, establishing the concept of the “keystone species.” More recent examples include the reintroduction of gray wolves (Canis lupus) to Yellowstone National Park, which restored trophic balance by regulating elk populations and allowing vegetation and secondary consumers to recover. 
 
 ![Predator-mediated coexistence](figures/starfish.jpeg)
 
